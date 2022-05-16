@@ -1,6 +1,6 @@
 # DirkjanBot
 
-Telegram bot to retrieve [Dirkjan](https://dirkjan.nl/) cartoons (photo format) for various timeframes.
+Telegram [bot](https://t.me/DailyDirkjanBot) to retrieve [Dirkjan](https://dirkjan.nl/) cartoons (photo format) for various timeframes.
 
 ## Info
 With this [Telegram](https://telegram.org) bot Dirkjan cartoons can be requested for various timeframes (see [Commands](#commands)). The cartoons are returned as an image with `Dirkjan YYYY-MM-DD` as the description. If no cartoon exists for a date (e.g. on the weekends), or a `.png` link to the image file cannot be found, an error/warning message is returned. 

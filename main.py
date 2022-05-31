@@ -23,7 +23,7 @@ def get_cartoon_url_from_date(cartoon_date, base_url="https://dirkjan.nl/cartoon
 
   # Some date formats for the cartoon
   day_url = date.strftime("%Y%m%d")
-  nice_date = date.strftime("%Y-%m-%d")
+  nice_date = date.strftime("%a %Y-%m-%d")
   png_name = date.strftime(f"Dirkjan {nice_date}")
   year = date.strftime("%Y")
   month = date.strftime("%m")

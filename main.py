@@ -5,11 +5,9 @@ from datetime import datetime, timedelta, date
 # Telebot to make this work with a Telegram bot
 # https://github.com/eternnoir/pyTelegramBotAPI
 import telebot
-# To keep the bot running
-# https://youtu.be/SPTfmiYiuok
-from keep_alive import keep_alive
 
 API_KEY = os.environ['API_KEY']
+print(f"{API_KEY = }")
 bot = telebot.TeleBot(API_KEY)
 
 def get_cartoon_url_from_date(cartoon_date, base_url="https://dirkjan.nl/cartoon/"):
@@ -151,5 +149,4 @@ def vorigeweek(message):
 
   return
 
-keep_alive()
 bot.infinity_polling()

@@ -7,7 +7,6 @@ from datetime import datetime, timedelta, date
 import telebot
 
 API_KEY = os.environ['API_KEY']
-CHAT_ID = os.environ['CHAT_ID']
 
 bot = telebot.TeleBot(API_KEY)
 
@@ -150,32 +149,4 @@ def vorigeweek(message):
 
   return
 
-
-def main():
-  # Inspiration: https://stackoverflow.com/a/56163328
-  # Today's date
-  today = date.today()
-  # Current weekday
-  weekday = today.isoweekday() - 1
-  # Start of the week
-  start = today - timedelta(days=weekday)
-  # Current week days
-  dates = [start + timedelta(days=d) for d in range(7)]
-
-  for day in dates:
-    requested_date = day.strftime("%Y%m%d")
-
-    try:
-      png_url, png_name = get_cartoon_url_from_date(requested_date)
-
-      bot.send_photo(CHAT_ID, photo=png_url, caption=png_name)
-    except ValueError:
-      resp = get_cartoon_url_from_date(requested_date)
-
-      bot.send_message(CHAT_ID, resp)
-
-  return
-
-
-if __name__ == "__main__":
-    main()
+bot.infinity_polling()

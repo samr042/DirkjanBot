@@ -1,16 +1,3 @@
-import os
-from urllib import request, error
-from re import search
-from datetime import datetime, timedelta, date
-# Telebot to make this work with a Telegram bot
-# https://github.com/eternnoir/pyTelegramBotAPI
-import telebot
-
-API_KEY = os.environ['API_KEY']
-CHAT_ID = os.environ['CHAT_ID']
-
-bot = telebot.TeleBot(API_KEY)
-
 def get_cartoon_url_from_date(cartoon_date, base_url="https://dirkjan.nl/cartoon/"):
   """ Get cartoon from date YYYYMMDD """
 
@@ -66,4 +53,22 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    from datetime import datetime, timedelta, date
+
+    if (wkday := datetime.now().weekday()) == 4:
+      import os
+      from urllib import request, error
+      from re import search
+
+      # Telebot to make this work with a Telegram bot
+      # https://github.com/eternnoir/pyTelegramBotAPI
+      import telebot
+
+      API_KEY = os.environ['API_KEY']
+      CHAT_ID = os.environ['CHAT_ID']
+
+      bot = telebot.TeleBot(API_KEY)
+
+      main()
+    else:
+      print(f"Vandaag is dag {wkday}, geen cartoons")

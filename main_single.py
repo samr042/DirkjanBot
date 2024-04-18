@@ -53,22 +53,42 @@ def main():
 
 
 if __name__ == "__main__":
+    print("loading packages")
     from datetime import datetime, timedelta, date
+    import os
+    from urllib import request, error
+    from re import search
+    from time import sleep
 
-    if (wkday := datetime.now().weekday()) == 4:
-      import os
-      from urllib import request, error
-      from re import search
+    # Telebot to make this work with a Telegram bot
+    # https://github.com/eternnoir/pyTelegramBotAPI
+    import telebot
 
-      # Telebot to make this work with a Telegram bot
-      # https://github.com/eternnoir/pyTelegramBotAPI
-      import telebot
+    print("loading keys")
+    API_KEY = os.environ['API_KEY']
+    CHAT_ID = os.environ['CHAT_ID']
+    
+    # Number of connection tries
+    tries = 0
+    # Sleep time after failed connection attempt
+    s_time = 5
+    
+    print("starting while")
+    while tries < 30:
+      try:
+        tries += 1
+        request.urlopen("https://8.8.8.8", timeout=1)
+        print(f"{tries} tries, finally success.\n")
+        
+        bot = telebot.TeleBot(API_KEY)
 
-      API_KEY = os.environ['API_KEY']
-      CHAT_ID = os.environ['CHAT_ID']
-
-      bot = telebot.TeleBot(API_KEY)
-
-      main()
-    else:
-      print(f"Vandaag is dag {wkday}, geen cartoons")
+        # If weekday is day 4 (friday)
+        if (wkday := datetime.now().weekday()) == 4:
+          main()
+        else:
+          msg = f"Vandaag is dag {wkday}, geen cartoons"
+          bot.send_message(CHAT_ID, msg)      
+        break
+      except request.URLError:
+        print(f"no connection yet ({tries} tries), sleeping {s_time} seconds.")
+        sleep(s_time)

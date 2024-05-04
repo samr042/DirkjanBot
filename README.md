@@ -22,7 +22,7 @@ Use this command to request all cartoon from the current week (mon-sun).
 Use this command to request all cartoon from the previous week (mon-sun).
 
 ## main_single.py
-This script fetches the data (cartoons for the past week) and sends them as messages to the provided CHAT_ID. This script won't take commands.
+This script fetches the data (cartoons for the past week) and sends them as messages to the provided CHAT_ID. This script won't take commands and only runs once.
 
 ## Sources
 - Using [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
@@ -31,3 +31,4 @@ This script fetches the data (cartoons for the past week) and sends them as mess
 
 # Disclaimer
 I do not own Dirkjan or any of the cartoons, I just enjoy the cartoons and wanted an easy way to share them with my friends. You can [contact](https://t.me/mijnaam) me via Telegram.
+

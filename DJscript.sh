@@ -1,4 +1,4 @@
 #!/bin/bash
-source /home/sam/Desktop/DirkjanBot/venv/bin/activate
-python /home/sam/Desktop/DirkjanBot/main_single_day.py
+source /Users/srompas/GitHub/DirkjanBot/venv/bin/activate
+python /Users/srompas/GitHub/DirkjanBot/main_single_day.py
 deactivate

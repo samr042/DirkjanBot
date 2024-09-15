@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 logging.basicConfig(
-    filename="DirkJanBot.log",
+    filename="/Users/srompas/GitHub/DirkjanBot/DirkJanBot.log",
     format="%(asctime)s: %(message)s",
     level=logging.INFO,
     # https://stackoverflow.com/a/49202811

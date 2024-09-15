@@ -80,11 +80,11 @@ def main():
     logger.info(f"{png_url = }, {png_name = }")
 
     if png_url:
-        logger.info("ended up in if")
-        # bot.send_photo(CHAT_ID, photo=png_url, caption=png_name)
+        bot.send_photo(CHAT_ID, photo=png_url, caption=png_name)
+        logger.info("sent found image")
     else:
-        logger.info("ended up in else")
-        # bot.send_message(CHAT_ID, png_name)
+        bot.send_message(CHAT_ID, png_name)
+        logger.info("no image found or sent")
 
     return
 

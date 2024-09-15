@@ -20,7 +20,7 @@ def get_cartoon_url_from_date(cartoon_date, base_url="https://dirkjan.nl/cartoon
         return None, f"Geen cartoon gevonden voor deze datum: {nice_date}"
 
     # Regex to find the png url
-    r = fr"<meta property=\"og:image\" content=\"https:\/\/dirkjan\.nl\/wp-content\/uploads\/20[0-9][0-9]\/[0-1][0-9]\/[a-z0-9]+\.png"
+    r = fr"<meta property=\"og:image\" content=\"https:\/\/dirkjan\.nl\/wp-content\/uploads\/20[0-9][0-9]\/[0-1][0-9]\/[a-z0-9]+\.jpg"
 
     if png_url := search(r, content)[0].split('content="')[1]:
         return png_url, png_name
@@ -30,7 +30,7 @@ def get_cartoon_url_from_date(cartoon_date, base_url="https://dirkjan.nl/cartoon
 
 def getWeekdayOnline():
     resp = request.urlopen(
-        'https://www.timeapi.io/api/Time/current/zone?timeZone=etc/utc'
+        'https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam'
     )
 
     current_day = json.loads(
@@ -98,11 +98,12 @@ if __name__ == "__main__":
                     print(f"{tries} tries, finally success.\n")
 
                     main()
-                else:
-                    bot.send_message(
-                        CHAT_ID,
-                        "Vandaag is geen vrijdag, dus geen cartoons"
-                    )
+                # else:
+                #     bot.send_message(
+                #         CHAT_ID,
+                #         "Vandaag is geen vrijdag, dus geen cartoons"
+                #     )
+                #     break
 
                 break
             except request.URLError:

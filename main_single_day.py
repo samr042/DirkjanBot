@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 logging.basicConfig(
-    filename='DirkJanBot.log',
+    filename="DirkJanBot.log",
     format="%(asctime)s: %(message)s",
     level=logging.INFO,
     # https://stackoverflow.com/a/49202811
@@ -56,7 +56,7 @@ def get_cartoon_url_from_date(cartoon_date, base_url="https://dirkjan.nl/cartoon
 
 def getWeekdayOnline():
     resp = request.urlopen(
-        'https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam'
+        "https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"
     )
 
     current_day = json.loads(
@@ -91,8 +91,8 @@ def main():
 
 if __name__ == "__main__":
     logger.info("loading keys")
-    API_KEY = os.environ['API_KEY']
-    CHAT_ID = os.environ['CHAT_ID']
+    API_KEY = os.environ["API_KEY"]
+    CHAT_ID = os.environ["CHAT_ID"]
 
     # Number of connection tries
     tries = 0
